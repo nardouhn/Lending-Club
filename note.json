@@ -1,0 +1,109 @@
+{
+  "name": "Executive Burgundy & Slate - Final",
+  "dataColors": [
+    "#0284C7",
+    "#EA580C",
+    "#7C3AED",
+    "#0D9488",
+    "#64748B",
+    "#8B5E3C"
+  ],
+  "good": "#15803D",
+  "neutral": "#94A3B8",
+  "bad": "#DC2626",
+  "maximum": "#991B1B",
+  "center": "#F1F5F9",
+  "minimum": "#FEF2F2",
+  "background": "#F8FAFC",
+  "foreground": "#0F172A",
+  "tableAccent": "#991B1B",
+  "visualStyles": {
+    "*": {
+      "*": {
+        "background": [
+          {
+            "show": true,
+            "color": { "solid": { "color": "#FFFFFF" } },
+            "transparency": 0
+          }
+        ],
+        "border": [
+          {
+            "show": true,
+            "color": { "solid": { "color": "#E2E8F0" } },
+            "radius": 4
+          }
+        ],
+        "grid": [
+          {
+            "gridVertical": false,
+            "gridHorizontal": true,
+            "gridHorizontalColor": { "solid": { "color": "#E2E8F0" } }
+          }
+        ]
+      }
+    },
+    "card": {
+      "*": {
+        "labels": [
+          {
+            "color": { "solid": { "color": "#0F172A" } },
+            "fontSize": 28,
+            "fontFamily": "Segoe UI",
+            "isBold": true
+          }
+        ],
+        "categoryLabels": [
+          {
+            "color": { "solid": { "color": "#475569" } },
+            "fontSize": 11,
+            "fontFamily": "Segoe UI",
+            "isBold": false
+          }
+        ]
+      }
+    },
+    "categoryCard": {
+      "*": {
+        "labels": [
+          {
+            "color": { "solid": { "color": "#0F172A" } },
+            "fontSize": 28,
+            "fontFamily": "Segoe UI",
+            "isBold": true
+          }
+        ],
+        "categoryLabels": [
+          {
+            "color": { "solid": { "color": "#475569" } },
+            "fontSize": 11,
+            "fontFamily": "Segoe UI",
+            "isBold": false
+          }
+        ]
+      }
+    },
+    "textbox": {
+      "*": {
+        "title": [
+          {
+            "show": true,
+            "color": { "solid": { "color": "#0F172A" } },
+            "fontSize": 13,
+            "fontFamily": "Segoe UI",
+            "isBold": true
+          }
+        ]
+      }
+    },
+    "page": {
+      "*": {
+        "outspace": [
+          {
+            "color": { "solid": { "color": "#F8FAFC" } }
+          }
+        ]
+      }
+    }
+  }
+}

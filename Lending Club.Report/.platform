@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Lending Club"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "94f98bea-45a6-46d7-ba08-ce5c811fee88"
+  }
+}

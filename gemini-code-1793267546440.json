@@ -1,0 +1,35 @@
+{
+  "name": "Executive Burgundy & Slate",
+  "dataColors": [
+    "#0284C7",
+    "#2563EB",
+    "#4F46E5",
+    "#7C3AED",
+    "#C026D3",
+    "#EA580C",
+    "#991B1B"
+  ],
+  "background": "#F8FAFC",
+  "foreground": "#0F172A",
+  "tableAccent": "#991B1B",
+  "visualStyles": {
+    "*": {
+      "*": {
+        "background": [
+          {
+            "show": true,
+            "color": { "solid": { "color": "#FFFFFF" } },
+            "transparency": 0
+          }
+        ],
+        "border": [
+          {
+            "show": true,
+            "color": { "solid": { "color": "#E2E8F0" } },
+            "radius": 6
+          }
+        ]
+      }
+    }
+  }
+}
