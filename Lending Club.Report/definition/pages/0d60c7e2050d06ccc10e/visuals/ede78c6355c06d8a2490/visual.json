@@ -3,9 +3,9 @@
   "name": "ede78c6355c06d8a2490",
   "position": {
     "x": 24,
-    "y": 36,
+    "y": 38,
     "z": 2000,
-    "height": 18,
+    "height": 22,
     "width": 1100,
     "tabOrder": 2000
   },
@@ -45,6 +45,19 @@
                       "Value": "'#991B1B'"
                     }
                   }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }

@@ -1,0 +1,418 @@
+table EDA_Loans
+	lineageTag: fc205ec7-b699-4ff4-8106-71c9ac2996a7
+
+	measure 'EDA Số khoản' = COUNTROWS ( EDA_Loans )
+		formatString: #,0
+		displayFolder: EDA
+		lineageTag: c79a9b70-bab7-4ab5-8c7c-d6c9fdb44202
+
+	measure 'EDA % đã biết kết cục' = DIVIDE ( CALCULATE ( [EDA Số khoản], EDA_Loans[da_ket_thuc] = 1 ), [EDA Số khoản] )
+		formatString: 0.0%
+		displayFolder: EDA
+		lineageTag: 99f8bc90-681a-411b-a261-a6cc301fe008
+
+	measure 'EDA Số khoản phạm vi' = CALCULATE ( [EDA Số khoản], EDA_Loans[pham_vi_rui_ro] = 1 )
+		formatString: #,0
+		displayFolder: EDA
+		lineageTag: e241b55e-58bf-4ef7-915a-6c2ef0048c7d
+
+	/// ROI theo vốn = (tổng thu - phí thu hồi - vốn giải ngân) / vốn giải ngân, tự áp phạm vi B
+	measure 'EDA ROI theo vốn' =
+			CALCULATE (
+				DIVIDE ( SUM ( EDA_Loans[loi_nhuan] ), SUM ( EDA_Loans[funded_amnt] ) ),
+				EDA_Loans[pham_vi_rui_ro] = 1
+			)
+		formatString: 0.0%
+		displayFolder: EDA
+		lineageTag: 96d93b0f-085d-4504-9c8f-2f40e04f548e
+
+	measure 'EDA Lãi suất TB' = CALCULATE ( AVERAGE ( EDA_Loans[lai_suat] ), EDA_Loans[pham_vi_rui_ro] = 1 )
+		formatString: 0.0%
+		displayFolder: EDA
+		lineageTag: 11dcf9ea-c2c2-4178-9e8c-2933780a91bc
+
+	measure 'EDA Tỷ trọng' = DIVIDE ( [EDA Số khoản], CALCULATE ( [EDA Số khoản], ALLSELECTED ( EDA_Loans ) ) )
+		formatString: 0.0%
+		displayFolder: EDA
+		lineageTag: ecdd72af-ca46-4057-8898-31004d134bd5
+
+	measure 'EDA Vốn giải ngân (tỷ USD)' = DIVIDE ( SUM ( EDA_Loans[funded_amnt] ), 1e9 )
+		formatString: 0.0 "tỷ USD"
+		displayFolder: EDA
+		lineageTag: 2118ebbe-5803-4ab5-9f01-8975f92d09e5
+
+	measure 'EDA Tỷ lệ vỡ nợ' = CALCULATE ( AVERAGE ( EDA_Loans[default] ), EDA_Loans[pham_vi_rui_ro] = 1 )
+		formatString: 0.0%
+		displayFolder: EDA
+		lineageTag: 14ef831a-6f4c-4d8c-bba4-c82a3b8c0d70
+
+	/// Ma trận: ô dưới 300 khoản để trống
+	measure 'EDA Tỷ lệ vỡ nợ đủ mẫu' = IF ( [EDA Số khoản phạm vi] >= 300, [EDA Tỷ lệ vỡ nợ] )
+		formatString: 0.0%
+		displayFolder: EDA
+		lineageTag: 3dfa392c-6d32-41af-aa68-76bb2d6dc22f
+
+	/// Đường tham chiếu: toàn phạm vi B
+	measure 'EDA Tỷ lệ vỡ nợ chung' = CALCULATE ( [EDA Tỷ lệ vỡ nợ], REMOVEFILTERS ( EDA_Loans ) )
+		formatString: 0.0%
+		displayFolder: EDA
+		lineageTag: bb1c8d1d-d5a3-4d3f-95c2-f238656115c7
+
+	/// Đỏ đô: cao hơn mức chung; xám: còn lại
+	measure 'EDA Màu vỡ nợ' =
+			
+			IF ( [EDA Tỷ lệ vỡ nợ] > [EDA Tỷ lệ vỡ nợ chung], "#64B5BB", "#B6EFF3" )
+		formatString: General
+		displayFolder: EDA
+		lineageTag: 3283be56-9e55-436e-b105-1d5aaa06dc94
+
+	/// Nhãn % cho biểu đồ cơ cấu hạng theo năm (V3); không có trong mục 4 của hướng dẫn
+	measure 'EDA Tỷ trọng hạng trong năm' = DIVIDE ( [EDA Số khoản], CALCULATE ( [EDA Số khoản], ALLSELECTED ( EDA_Loans[grade] ) ) )
+		formatString: 0.0%
+		displayFolder: EDA
+		lineageTag: 8a4d4031-6c70-4321-8bc4-f803c2583d22
+
+	column funded_amnt
+		dataType: double
+		isHidden
+		lineageTag: 43a7f8bb-b386-4c5b-9050-1b0678204965
+		summarizeBy: none
+		sourceColumn: funded_amnt
+
+	column annual_inc
+		dataType: double
+		lineageTag: 19736833-b19f-4483-ad50-07009d1eddff
+		summarizeBy: none
+		sourceColumn: annual_inc
+
+	column dti
+		dataType: double
+		lineageTag: 98b13e61-75f8-4b16-b185-8d973578b8a1
+		summarizeBy: none
+		sourceColumn: dti
+
+	column fico_range_low
+		dataType: double
+		lineageTag: f1fdd904-55a8-407e-82b0-d06c23969720
+		summarizeBy: none
+		sourceColumn: fico_range_low
+
+	column grade
+		dataType: string
+		lineageTag: 421d2c21-924f-4d31-be93-2fe37ebaee65
+		summarizeBy: none
+		sourceColumn: grade
+
+	column ngay_phat_hanh
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: cf68052e-9836-4b9e-beec-20a10d37cd4d
+		summarizeBy: none
+		sourceColumn: ngay_phat_hanh
+
+	column nam
+		dataType: int64
+		lineageTag: cf2d5fd7-f23a-4cb0-b064-90668d3671a5
+		summarizeBy: none
+		sourceColumn: nam
+
+	column quy
+		dataType: string
+		lineageTag: 18dad316-05ea-4c41-9e18-e2425b5b0076
+		summarizeBy: none
+		sourceColumn: quy
+
+	column term_thang
+		dataType: int64
+		lineageTag: d57d2af6-676a-4155-9c37-7c5fb48b68cc
+		summarizeBy: none
+		sourceColumn: term_thang
+
+	column nhom_trang_thai
+		dataType: string
+		lineageTag: 4baa65a2-9003-44d6-bf58-0f442f3b0618
+		summarizeBy: none
+		sourceColumn: nhom_trang_thai
+		sortByColumn: nhom_trang_thai_tt
+
+	column nhom_trang_thai_tt
+		dataType: int64
+		isHidden
+		lineageTag: ecebdaa0-d493-4c92-8583-6e496b6c45a9
+		summarizeBy: none
+		sourceColumn: nhom_trang_thai_tt
+
+	column da_ket_thuc
+		dataType: int64
+		isHidden
+		lineageTag: d467509d-b111-41af-8320-69abdf42c0c2
+		summarizeBy: none
+		sourceColumn: da_ket_thuc
+
+	column default
+		dataType: double
+		isHidden
+		lineageTag: fdd19992-fcd1-43ab-9d26-48a08d442346
+		summarizeBy: none
+		sourceColumn: default
+
+	column pham_vi_rui_ro
+		dataType: int64
+		isHidden
+		lineageTag: a0f409a0-8b6e-4bac-897d-9cc2d9c6e8b5
+		summarizeBy: none
+		sourceColumn: pham_vi_rui_ro
+
+	column loi_nhuan
+		dataType: double
+		isHidden
+		lineageTag: ef467348-c058-46af-9575-df4b6a7069fb
+		summarizeBy: none
+		sourceColumn: loi_nhuan
+
+	column lai_suat
+		dataType: double
+		lineageTag: 7adff1bc-6a61-499e-a8f6-6b6eb450a60c
+		summarizeBy: none
+		sourceColumn: lai_suat
+
+	column nhom_hang
+		dataType: string
+		lineageTag: 1b1c7775-bb4c-4b3a-ba17-8fbd45c7e994
+		summarizeBy: none
+		sourceColumn: nhom_hang
+
+	column dai_fico_tt
+		dataType: int64
+		isHidden
+		lineageTag: c0c799cf-317d-47c3-82e1-e80b9e2956c8
+		summarizeBy: none
+		sourceColumn: dai_fico_tt
+
+	column dai_fico
+		dataType: string
+		lineageTag: d25d5e28-23c8-4754-a336-f8a789c03434
+		summarizeBy: none
+		sourceColumn: dai_fico
+		sortByColumn: dai_fico_tt
+
+	column dai_dti_tt
+		dataType: int64
+		isHidden
+		lineageTag: 2dae7eb7-697f-4ba6-a59b-e58129563993
+		summarizeBy: none
+		sourceColumn: dai_dti_tt
+
+	column dai_dti
+		dataType: string
+		lineageTag: ccc7680f-28c4-4fdc-be3d-4b97df351fc0
+		summarizeBy: none
+		sourceColumn: dai_dti
+		sortByColumn: dai_dti_tt
+
+	column dai_thu_nhap_tt
+		dataType: int64
+		isHidden
+		lineageTag: ea3e3935-fac6-4ea8-95fb-34ab85324aea
+		summarizeBy: none
+		sourceColumn: dai_thu_nhap_tt
+
+	column dai_thu_nhap
+		dataType: string
+		lineageTag: 3546b71e-2827-40d0-9b9d-cc441a3b1f2d
+		summarizeBy: none
+		sourceColumn: dai_thu_nhap
+		sortByColumn: dai_thu_nhap_tt
+
+	column nhom_tham_nien
+		dataType: string
+		lineageTag: 06ef2493-c8fd-46a6-952c-d90e81593328
+		summarizeBy: none
+		sourceColumn: nhom_tham_nien
+		sortByColumn: nhom_tham_nien_tt
+
+	column nhom_tham_nien_tt
+		dataType: int64
+		isHidden
+		lineageTag: 5b9d47fa-ee24-4a6c-8434-c2e43a1f91de
+		summarizeBy: none
+		sourceColumn: nhom_tham_nien_tt
+
+	column nhom_nha_o
+		dataType: string
+		lineageTag: 9c0de126-8aef-49f1-831b-71b559438eb8
+		summarizeBy: none
+		sourceColumn: nhom_nha_o
+		sortByColumn: nhom_nha_o_tt
+
+	column nhom_muc_dich
+		dataType: string
+		lineageTag: 0b7edba3-9ff9-449c-afde-c0aaa0ad3d62
+		summarizeBy: none
+		sourceColumn: nhom_muc_dich
+		sortByColumn: nhom_muc_dich_tt
+
+	column ket_cuc
+		dataType: string
+		lineageTag: 727093f3-cc52-40f5-8153-78ca1b18514d
+		summarizeBy: none
+		sourceColumn: ket_cuc
+		sortByColumn: ket_cuc_tt
+
+	column ket_cuc_tt
+		dataType: int64
+		isHidden
+		lineageTag: f0fc253a-91c2-407f-b457-c7c93ee9a68c
+		summarizeBy: none
+		sourceColumn: ket_cuc_tt
+
+	column quy_bat_dau
+		dataType: dateTime
+		formatString: yyyy
+		lineageTag: 73b6b980-34df-41e3-9f69-eeff96a592e2
+		summarizeBy: none
+		sourceColumn: quy_bat_dau
+
+	column nhom_nha_o_tt
+		dataType: int64
+		isHidden
+		lineageTag: bbc7c7a8-59fc-4887-8301-a24ac4bad613
+		summarizeBy: none
+		sourceColumn: nhom_nha_o_tt
+
+	column nhom_muc_dich_tt
+		dataType: int64
+		isHidden
+		lineageTag: 607fbd0f-4c47-4e79-9300-4ece69c5c1cf
+		summarizeBy: none
+		sourceColumn: nhom_muc_dich_tt
+
+	partition EDA_Loans = m
+		mode: import
+		source =
+				let
+					Nguon = Parquet.Document(File.Contents(EDA_DuongDanFile)),
+				
+					GiuCot = Table.SelectColumns(Nguon, {
+						"issue_d", "term", "funded_amnt", "annual_inc", "dti", "emp_length",
+						"home_ownership", "purpose", "fico_range_low", "grade", "int_rate",
+						"loan_status", "total_pymnt", "collection_recovery_fee"}),
+				
+					LamSachChu = Table.TransformColumns(GiuCot, {
+						{"issue_d",        each Text.Trim(Text.From(_)), type text},
+						{"term",           each Text.Trim(Text.From(_)), type text},
+						{"emp_length",     each if _ = null then null else Text.Trim(Text.From(_)), type nullable text},
+						{"home_ownership", each Text.Trim(Text.From(_)), type text},
+						{"purpose",        each Text.Trim(Text.From(_)), type text},
+						{"grade",          each Text.Trim(Text.From(_)), type text},
+						{"loan_status",    each Text.Trim(Text.From(_)), type text}}),
+				
+					KieuSo = Table.TransformColumnTypes(LamSachChu, {
+						{"funded_amnt", type number}, {"annual_inc", type number}, {"dti", type number},
+						{"fico_range_low", type number}, {"int_rate", type number},
+						{"total_pymnt", type number}, {"collection_recovery_fee", type number}}),
+				
+					// ---- thời gian, kỳ hạn
+					Ngay   = Table.AddColumn(KieuSo, "ngay_phat_hanh", each
+								Date.FromText("01-" & [issue_d], [Format = "dd-MMM-yyyy", Culture = "en-US"]), type date),
+					Nam    = Table.AddColumn(Ngay, "nam", each Date.Year([ngay_phat_hanh]), Int64.Type),
+					Quy    = Table.AddColumn(Nam, "quy", each
+								Text.From([nam]) & "-Q" & Text.From(Date.QuarterOfYear([ngay_phat_hanh])), type text),
+					KyHan  = Table.AddColumn(Quy, "term_thang", each Number.From(Text.Select([term], {"0".."9"})), Int64.Type),
+				
+					// ---- trạng thái và kết cục
+					// 'Default' KHÔNG phải trạng thái kết thúc (out_prncp còn khác 0) -> xếp vào Trễ hạn
+					NhomTT = Table.AddColumn(KyHan, "nhom_trang_thai", each
+								if [loan_status] = "Fully Paid" then "Trả đủ"
+								else if [loan_status] = "Charged Off" then "Xóa nợ"
+								else if [loan_status] = "Current" then "Đang trả"
+								else if Text.StartsWith([loan_status], "Does not meet") then "Ngoại lệ chính sách"
+								else "Trễ hạn", type text),
+					NhomTTtt = Table.AddColumn(NhomTT, "nhom_trang_thai_tt", each
+								List.PositionOf({"Trả đủ", "Xóa nợ", "Trễ hạn", "Đang trả", "Ngoại lệ chính sách"},
+												[nhom_trang_thai]) + 1, Int64.Type),
+					KetThuc = Table.AddColumn(NhomTTtt, "da_ket_thuc", each
+								if List.Contains({"Fully Paid", "Charged Off"}, [loan_status]) then 1 else 0, Int64.Type),
+					VoNo    = Table.AddColumn(KetThuc, "default", each
+								if [da_ket_thuc] = 1 then (if [loan_status] = "Charged Off" then 1 else 0) else null,
+								type nullable number),
+					PhamVi  = Table.AddColumn(VoNo, "pham_vi_rui_ro", each
+								if [term_thang] = 36 and [nam] >= 2013 and [nam] <= 2015 and [da_ket_thuc] = 1
+								then 1 else 0, Int64.Type),
+				
+					// ---- lợi nhuận và lãi suất (null -> 0)
+					LoiNhuan = Table.AddColumn(PhamVi, "loi_nhuan", each
+								(if [total_pymnt] = null then 0 else [total_pymnt])
+							- (if [collection_recovery_fee] = null then 0 else [collection_recovery_fee])
+							- (if [funded_amnt] = null then 0 else [funded_amnt]), type number),
+					LaiSuat  = Table.AddColumn(LoiNhuan, "lai_suat", each [int_rate] / 100, type number),
+					NhomHang = Table.AddColumn(LaiSuat, "nhom_hang", each
+								if List.Contains({"A", "B"}, [grade]) then "A–B"
+								else if List.Contains({"C", "D"}, [grade]) then "C–D"
+								else "E–G", type text),
+				
+					// ---- chia dải: khoảng [a, b), giá trị âm hoặc null -> null
+					ThuTu = (x as nullable number, moc as list) as nullable number =>
+						if x = null or x < 0 then null else List.Count(List.Select(moc, (m) => m <= x)) + 1,
+					ThemDai = (bang as table, nguon as text, ten as text, moc as list, nhan as list) as table =>
+						let
+							b1 = Table.AddColumn(bang, ten & "_tt", each ThuTu(Record.Field(_, nguon), moc), Int64.Type),
+							b2 = Table.AddColumn(b1, ten, each
+									let k = Record.Field(_, ten & "_tt") in if k = null then null else nhan{k - 1},
+									type nullable text)
+						in b2,
+				
+					DaiFico = ThemDai(NhomHang, "fico_range_low", "dai_fico", {660, 680, 700, 720, 740, 780},
+								{"Dưới 660", "660–680", "680–700", "700–720", "720–740", "740–780", "Từ 780"}),
+					DaiDti  = ThemDai(DaiFico, "dti", "dai_dti", {10, 15, 20, 25, 30, 35},
+								{"0–10", "10–15", "15–20", "20–25", "25–30", "30–35", "Từ 35"}),
+					DaiTN   = ThemDai(DaiDti, "annual_inc", "dai_thu_nhap", {40000, 60000, 80000, 100000, 150000},
+								{"Dưới 40k", "40–60k", "60–80k", "80–100k", "100–150k", "Từ 150k"}),
+				
+					// ---- hồ sơ người vay
+					ThamNien = Table.AddColumn(DaiTN, "nhom_tham_nien", each
+								let e = [emp_length] in
+								if e = null or e = "" or e = "n/a" then "Không khai"
+								else if e = "< 1 year" then "Dưới 1 năm"
+								else if e = "10+ years" then "Từ 10 năm"
+								else if Number.From(Text.BeforeDelimiter(e, " ")) <= 4 then "1–4 năm"
+								else "5–9 năm", type text),
+					ThamNienTT = Table.AddColumn(ThamNien, "nhom_tham_nien_tt", each
+								List.PositionOf({"Dưới 1 năm", "1–4 năm", "5–9 năm", "Từ 10 năm", "Không khai"},
+												[nhom_tham_nien]) + 1, Int64.Type),
+					NhaO = Table.AddColumn(ThamNienTT, "nhom_nha_o", each
+								if [home_ownership] = "MORTGAGE" then "Thế chấp"
+								else if [home_ownership] = "RENT" then "Thuê"
+								else if [home_ownership] = "OWN" then "Sở hữu"
+								else "Khác", type text),
+					MucDich = Table.AddColumn(NhaO, "nhom_muc_dich", each
+								if [purpose] = null then "Khác" else
+								Record.FieldOrDefault([
+									debt_consolidation = "Hợp nhất nợ", credit_card = "Trả nợ thẻ",
+									home_improvement = "Sửa nhà", major_purchase = "Mua sắm lớn",
+									car = "Mua xe", small_business = "Kinh doanh nhỏ"], [purpose], "Khác"), type text),
+				
+					// ---- cột phục vụ bản v2 của 2 trang
+					KetCuc = Table.AddColumn(MucDich, "ket_cuc", each
+								if [loan_status] = "Fully Paid"
+								or [loan_status] = "Does not meet the credit policy. Status:Fully Paid" then "Trả đủ"
+								else if [loan_status] = "Charged Off"
+								or [loan_status] = "Does not meet the credit policy. Status:Charged Off" then "Xóa nợ"
+								else "Chưa kết thúc", type text),
+					KetCucTT = Table.AddColumn(KetCuc, "ket_cuc_tt", each
+								List.PositionOf({"Trả đủ", "Xóa nợ", "Chưa kết thúc"}, [ket_cuc]) + 1, Int64.Type),
+					QuyBatDau = Table.AddColumn(KetCucTT, "quy_bat_dau", each
+								#date([nam], (Date.QuarterOfYear([ngay_phat_hanh]) - 1) * 3 + 1, 1), type date),
+					// nhóm danh nghĩa: thứ tự theo tỷ lệ vỡ nợ giảm dần (đo trên phạm vi B, xem scripts/so_ky_vong_eda.txt)
+					NhaOTT = Table.AddColumn(QuyBatDau, "nhom_nha_o_tt", each
+								List.PositionOf({"Thuê", "Sở hữu", "Thế chấp", "Khác"}, [nhom_nha_o]) + 1, Int64.Type),
+					MucDichTT = Table.AddColumn(NhaOTT, "nhom_muc_dich_tt", each
+								List.PositionOf({"Kinh doanh nhỏ", "Khác", "Hợp nhất nợ", "Mua sắm lớn",
+												"Sửa nhà", "Mua xe", "Trả nợ thẻ"}, [nhom_muc_dich]) + 1, Int64.Type),
+				
+					BoCot = Table.RemoveColumns(MucDichTT, {
+						"issue_d", "term", "int_rate", "emp_length", "home_ownership", "purpose",
+						"loan_status", "total_pymnt", "collection_recovery_fee"})
+				in
+					BoCot
+

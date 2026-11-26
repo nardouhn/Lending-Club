@@ -7,9 +7,14 @@ model Model
 		legacyRedirects
 		returnErrorValuesAsNull
 
-annotation __PBI_TimeIntelligenceEnabled = 1
+annotation __PBI_TimeIntelligenceEnabled = 0
 
 annotation PBI_ProTooling = ["DevMode"]
+
+annotation PBI_QueryOrder = ["EDA_Loans","EDA_DuongDanFile"]
+
+ref table EDA_Loans
+ref table EDA_DacDiem
 
 ref cultureInfo en-US
 

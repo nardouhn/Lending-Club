@@ -1,0 +1,5 @@
+expression EDA_DuongDanFile = "C:\VS code\Visualize\Pow_cky\Lending-Club\data\loans_eda.parquet" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 6aa7e110-cfa3-4a7d-9b60-4be8b7ab170a
+
+	annotation PBI_ResultType = Text
+

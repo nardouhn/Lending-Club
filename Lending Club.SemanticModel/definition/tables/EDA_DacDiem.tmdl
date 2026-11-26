@@ -1,0 +1,51 @@
+table EDA_DacDiem
+	lineageTag: 13f6eb83-604d-4553-aad0-d28c542f0835
+
+	column EDA_DacDiem
+		lineageTag: e2a3ea12-a51f-46e3-b517-99f62555a4ce
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'EDA_DacDiem Order'
+
+		relatedColumnDetails
+			groupByColumn: 'EDA_DacDiem Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'EDA_DacDiem Fields'
+		isHidden
+		lineageTag: e2417144-6844-464c-9080-b7072f193b35
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'EDA_DacDiem Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'EDA_DacDiem Order'
+		isHidden
+		formatString: 0
+		lineageTag: a105f3de-c729-48a8-8ab3-033a154d1491
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition EDA_DacDiem = calculated
+		mode: import
+		source =
+				{
+				    ("Thu nhập", NAMEOF('EDA_Loans'[dai_thu_nhap]), 0),
+				    ("Nhà ở", NAMEOF('EDA_Loans'[nhom_nha_o]), 1),
+				    ("Thâm niên", NAMEOF('EDA_Loans'[nhom_tham_nien]), 2),
+				    ("Mục đích", NAMEOF('EDA_Loans'[nhom_muc_dich]), 3),
+				    ("Điểm FICO", NAMEOF('EDA_Loans'[dai_fico]), 4)
+				}
+
+	annotation PBI_Id = 041036c663934e9cb980e2f9ee7df82a
+
