@@ -1,0 +1,521 @@
+table loans_mau
+	lineageTag: c8480c57-4132-4080-92bc-b8148462556f
+
+	column id
+		formatString: 0
+		lineageTag: b4f3e274-2c72-4066-8363-bf59f1343e50
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: loans_clean[id]
+
+		annotation SummarizationSetBy = Automatic
+
+	column issue_d
+		formatString: General Date
+		lineageTag: 084001f7-5606-4d79-90a3-da49a214b7b4
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: loans_clean[issue_d]
+
+		variation Variation
+			isDefault
+			relationship: d15f8209-df94-4405-9e4e-660ecbb9261f
+			defaultHierarchy: LocalDateTable_17a036fe-38f4-4b64-8a1e-3a5a7901522a.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column issue_year
+		formatString: 0
+		lineageTag: 9fb14831-9de0-4d05-b052-b1afde014d89
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: loans_clean[issue_year]
+
+		annotation SummarizationSetBy = Automatic
+
+	column term_thang
+		formatString: 0
+		lineageTag: 20254fe4-6adc-40f1-a7da-46f8f0f6b86f
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: loans_clean[term_thang]
+
+		annotation SummarizationSetBy = Automatic
+
+	column da_dao_han
+		formatString: 0
+		lineageTag: 9aaaeaa0-6584-475d-9e33-98a66f629603
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: loans_clean[da_dao_han]
+
+		annotation SummarizationSetBy = Automatic
+
+	column loan_amnt
+		formatString: 0
+		lineageTag: d506530b-438f-4ee0-a64e-8d90aa6d1b43
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: loans_clean[loan_amnt]
+
+		annotation SummarizationSetBy = Automatic
+
+	column annual_inc
+		formatString: 0
+		lineageTag: 76f039b4-a041-4656-87a4-8b173b71fcf9
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: loans_clean[annual_inc]
+
+		annotation SummarizationSetBy = Automatic
+
+	column fico_range_low
+		formatString: 0
+		lineageTag: dc24c153-8c69-41e2-9daa-a60c391cfd94
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: loans_clean[fico_range_low]
+
+		annotation SummarizationSetBy = Automatic
+
+	column revol_bal
+		formatString: 0
+		lineageTag: 2254a3d8-9ac2-417a-9bc1-b98452de5673
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: loans_clean[revol_bal]
+
+		annotation SummarizationSetBy = Automatic
+
+	column revol_util
+		lineageTag: d68a49ae-08af-4347-a853-13a6b26ca596
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: loans_clean[revol_util]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column revol_bal_zero
+		formatString: 0
+		lineageTag: b0858c22-8983-43d1-88e9-2874e4013fd3
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: loans_clean[revol_bal_zero]
+
+		annotation SummarizationSetBy = Automatic
+
+	column annual_inc_t
+		lineageTag: d00c9eaa-d901-4f3f-a447-32ce529c49b6
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: loans_clean[annual_inc_t]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column fico_range_low_t
+		lineageTag: b73f4924-b27f-4ad9-ad45-8f51c4121089
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: loans_clean[fico_range_low_t]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column mo_sin_rcnt_tl_t
+		lineageTag: 35ead24f-5683-43e7-9a93-7d75f2d0b4a1
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: loans_clean[mo_sin_rcnt_tl_t]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column revol_bal_t
+		lineageTag: 4163b92a-573a-4c84-8ae1-2e70036e3844
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: loans_clean[revol_bal_t]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column tot_hi_cred_lim_t
+		lineageTag: a3d2d9e3-ff3d-42db-8662-a5b9ed1b0e6f
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: loans_clean[tot_hi_cred_lim_t]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_bal_ex_mort_t
+		lineageTag: 86aff598-7db0-4990-9117-3e262f30eafd
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: loans_clean[total_bal_ex_mort_t]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column delinq_2yrs_t
+		lineageTag: d2e664d4-94c4-40aa-9e7f-30cd22ceff68
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: loans_clean[delinq_2yrs_t]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column pub_rec_t
+		lineageTag: de858778-1341-417c-a3d5-6e96e526e9de
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: loans_clean[pub_rec_t]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column num_accts_ever_120_pd_t
+		lineageTag: c0cfae79-dda6-4eee-b37e-735f03914eb1
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: loans_clean[num_accts_ever_120_pd_t]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column inq_last_6mths_t
+		lineageTag: d208ee3d-a138-4baf-9364-85f3ad298c9f
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: loans_clean[inq_last_6mths_t]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column num_il_tl_t
+		lineageTag: 6b740828-987a-4a6c-bbc1-ee3739103e29
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: loans_clean[num_il_tl_t]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column mort_acc_t
+		lineageTag: 7798a2dd-e7f4-4038-87c1-184bcd9f95f3
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: loans_clean[mort_acc_t]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column tuoi_tin_dung_thang_t
+		lineageTag: 729625ad-71f6-431c-b091-74fe3e97145b
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: loans_clean[tuoi_tin_dung_thang_t]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column open_acc_t
+		lineageTag: 492e8876-1a91-4bb4-9006-8d30a54326c0
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: loans_clean[open_acc_t]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_acc_t
+		lineageTag: cbd7cfeb-8726-4ac9-bc78-b8b11a156fcb
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: loans_clean[total_acc_t]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column acc_open_past_24mths_t
+		lineageTag: 74e4ab7a-2982-4f71-aa8d-e637749ed1af
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: loans_clean[acc_open_past_24mths_t]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column dti
+		lineageTag: 380f6770-434b-4c83-ade8-41bebcb62fdc
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: loans_clean[dti]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column emp_length_num
+		formatString: 0
+		lineageTag: ad9dc8e2-3e95-4965-8494-05f276e3166c
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: loans_clean[emp_length_num]
+
+		annotation SummarizationSetBy = Automatic
+
+	column pct_tl_nvr_dlq
+		lineageTag: c92dcf5b-f6f5-40a4-9827-b24a5d8cbd47
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: loans_clean[pct_tl_nvr_dlq]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column khong_khai_emp_length
+		formatString: 0
+		lineageTag: 230ab165-b004-4c3d-8364-e7a149cb36b3
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: loans_clean[khong_khai_emp_length]
+
+		annotation SummarizationSetBy = Automatic
+
+	column vuot_han_muc
+		formatString: 0
+		lineageTag: bdb51749-a9d8-4133-a9fc-0014c095615f
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: loans_clean[vuot_han_muc]
+
+		annotation SummarizationSetBy = Automatic
+
+	column grade
+		lineageTag: 60fd39ba-fae7-453e-adb9-29e274eb76ca
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: loans_clean[grade]
+
+		annotation SummarizationSetBy = Automatic
+
+	column sub_grade
+		lineageTag: 198deca3-81f0-42fc-94fe-d70cee1b8cf6
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: loans_clean[sub_grade]
+
+		annotation SummarizationSetBy = Automatic
+
+	column int_rate
+		lineageTag: c59a451d-37f5-4d0b-b1f7-89b718a17406
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: loans_clean[int_rate]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column installment
+		lineageTag: 29e20ccf-788f-4067-82ae-1aa6adfc75fb
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: loans_clean[installment]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column verification_status
+		lineageTag: 94a26d04-2c63-4445-b16a-540a717489e1
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: loans_clean[verification_status]
+
+		annotation SummarizationSetBy = Automatic
+
+	column purpose
+		lineageTag: b13bb5c9-e801-45d9-9a30-8e31875b6cd7
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: loans_clean[purpose]
+
+		annotation SummarizationSetBy = Automatic
+
+	column home_ownership
+		lineageTag: 2f6b61f0-dee9-49f1-affb-2f6706f7befa
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: loans_clean[home_ownership]
+
+		annotation SummarizationSetBy = Automatic
+
+	column initial_list_status
+		lineageTag: 24850306-f15e-4b0b-b29f-d1a6a7bd0f24
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: loans_clean[initial_list_status]
+
+		annotation SummarizationSetBy = Automatic
+
+	column addr_state
+		lineageTag: 4297b146-3532-481a-9e8d-df5df0b412df
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: loans_clean[addr_state]
+
+		annotation SummarizationSetBy = Automatic
+
+	column vung
+		lineageTag: cf8f8665-f751-44d9-84fc-4cc94506298e
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: loans_clean[vung]
+
+		annotation SummarizationSetBy = Automatic
+
+	column loan_status
+		lineageTag: feeab31b-613b-48e1-b85f-f319673022e1
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: loans_clean[loan_status]
+
+		annotation SummarizationSetBy = Automatic
+
+	column default
+		formatString: 0
+		lineageTag: e3c90d89-7b8d-4634-b440-733e92fb5250
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: loans_clean[default]
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_pymnt
+		lineageTag: b9b5888d-3eae-4fb1-9478-52d502f9e210
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: loans_clean[total_pymnt]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_rec_prncp
+		lineageTag: 08d7bab3-2c0f-4855-bd7d-778cb9645564
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: loans_clean[total_rec_prncp]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_rec_int
+		lineageTag: 3a5fffb8-3167-48b7-9cbf-66cc6d8487b2
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: loans_clean[total_rec_int]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_rec_late_fee
+		lineageTag: a3de1040-c869-4914-b02c-dccf73a39b24
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: loans_clean[total_rec_late_fee]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column recoveries
+		lineageTag: 9eb5d586-d2e0-43b4-9216-93b16b4df47b
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: loans_clean[recoveries]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column collection_recovery_fee
+		lineageTag: 3ef4c0c1-a1d1-4536-8a3d-73a06fa59437
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: loans_clean[collection_recovery_fee]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column last_pymnt_d
+		formatString: General Date
+		lineageTag: 6098781f-4d5e-4ab5-a96b-1cbed885796f
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: loans_clean[last_pymnt_d]
+
+		variation Variation
+			isDefault
+			relationship: aa332ee0-9867-4670-a753-68a7d16c52df
+			defaultHierarchy: LocalDateTable_524bd2fe-02c5-4b79-9f8d-0b7786b82f15.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column cum
+		formatString: 0
+		lineageTag: 87fd644d-5e67-43c6-bc3b-7ba6c5175045
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: loans_clean[cum]
+
+		annotation SummarizationSetBy = Automatic
+
+	column nhan_cum
+		lineageTag: 3a06e18f-53fa-480a-a4d3-7b76bc4e9781
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: loans_clean[nhan_cum]
+
+		annotation SummarizationSetBy = Automatic
+
+	column ten_cum
+		lineageTag: a7469978-5399-40aa-ad1f-a8466070e10a
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: loans_clean[ten_cum]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition loans_mau = calculated
+		mode: import
+		source = FILTER(loans_clean, MOD(loans_clean[id], 100) < 26)
+
+	annotation PBI_Id = b49c912429694bcc86ed6d1fb59c7b65
+

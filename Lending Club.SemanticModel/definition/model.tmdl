@@ -11,5 +11,16 @@ annotation __PBI_TimeIntelligenceEnabled = 1
 
 annotation PBI_ProTooling = ["DevMode"]
 
+annotation PBI_QueryOrder = ["loans_clean"]
+
+ref table loans_clean
+ref table DateTableTemplate_bb294bc5-53f2-4f9b-b269-8e834d3fdf44
+ref table LocalDateTable_c626ee4a-779d-4cbf-84cb-eeaa2d47992c
+ref table LocalDateTable_d853c7b1-ed7c-4d39-a511-5771a69a3cda
+ref table cum_tong_hop
+ref table loans_mau
+ref table LocalDateTable_17a036fe-38f4-4b64-8a1e-3a5a7901522a
+ref table LocalDateTable_524bd2fe-02c5-4b79-9f8d-0b7786b82f15
+
 ref cultureInfo en-US
 

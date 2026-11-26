@@ -1,0 +1,323 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "2a79b65aaf03983123af",
+  "position": {
+    "x": 24,
+    "y": 290,
+    "z": 3006,
+    "height": 430,
+    "width": 730,
+    "tabOrder": 3006
+  },
+  "visual": {
+    "visualType": "pythonVisual",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "loans_mau"
+                    }
+                  },
+                  "Property": "cum"
+                }
+              },
+              "queryRef": "loans_mau.cum",
+              "nativeQueryRef": "cum"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "loans_mau"
+                    }
+                  },
+                  "Property": "id"
+                }
+              },
+              "queryRef": "loans_mau.id",
+              "nativeQueryRef": "id"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "loans_mau"
+                    }
+                  },
+                  "Property": "annual_inc_t"
+                }
+              },
+              "queryRef": "loans_mau.annual_inc_t",
+              "nativeQueryRef": "annual_inc_t"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "loans_mau"
+                    }
+                  },
+                  "Property": "fico_range_low"
+                }
+              },
+              "queryRef": "loans_mau.fico_range_low",
+              "nativeQueryRef": "fico_range_low"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "loans_mau"
+                    }
+                  },
+                  "Property": "dti"
+                }
+              },
+              "queryRef": "loans_mau.dti",
+              "nativeQueryRef": "dti"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "loans_mau"
+                    }
+                  },
+                  "Property": "revol_util"
+                }
+              },
+              "queryRef": "loans_mau.revol_util",
+              "nativeQueryRef": "revol_util"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "loans_mau"
+                    }
+                  },
+                  "Property": "total_acc_t"
+                }
+              },
+              "queryRef": "loans_mau.total_acc_t",
+              "nativeQueryRef": "total_acc_t"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "loans_mau"
+                    }
+                  },
+                  "Property": "tuoi_tin_dung_thang_t"
+                }
+              },
+              "queryRef": "loans_mau.tuoi_tin_dung_thang_t",
+              "nativeQueryRef": "tuoi_tin_dung_thang_t"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "script": [
+        {
+          "properties": {
+            "source": {
+              "expr": {
+                "Literal": {
+                  "Value": "'# -*- coding: utf-8 -*-\n# Power BI Python visual: BIỂU ĐỒ ĐƯỜNG 5 CỤM x 6 TIÊU CHÍ (kèm bảng giá trị)\nimport numpy as np, pandas as pd\nimport matplotlib.pyplot as plt\nfrom matplotlib.patches import Rectangle\nplt.rcParams[\"font.family\"] = \"DejaVu Sans\"\n\n# ---- LẤY NGẪU NHIÊN TỐI ĐA 145.000 DÒNG ----\nMAX_ROWS = 145000\nd = dataset.copy()\nif len(d) > MAX_ROWS:\n    d = d.sample(n=MAX_ROWS, random_state=42)\n\nd[\"cum\"] = d[\"cum\"].astype(int)\n\nTEN = {1: \"R1 · Tín dụng tốt\", 2: \"R2 · Dùng sát hạn mức\", 3: \"R3 · Thu nhập cao, vay lớn\",\n       4: \"R4 · Thu nhập thấp, vay nhỏ\", 5: \"R5 · Gánh nặng cao\"}\nTEN_BANG = {1: \"R1\", 2: \"R2\", 3: \"R3\", 4: \"R4\", 5: \"R5\"} \n\nCOL = {1: \"#7F3335\", 2: \"#04461C\", 3: \"#D08A8D\", 4: \"#5FA67A\", 5: \"#8A8A8A\"}\nMK = {1: \"o\", 2: \"s\", 3: \"^\", 4: \"D\", 5: \"v\"}\nAX = [(\"Thu nhập\", \"annual_inc_t\"), (\"Điểm FICO\", \"fico_range_low\"), (\"DTI\", \"dti\"),\n      (\"Hạn mức\", \"revol_util\"), (\"Số tài khoản\", \"total_acc_t\"), (\"Tuổi tín dụng\", \"tuoi_tin_dung_thang_t\")]\n\n# z-score trung bình của từng cụm\nZ = pd.DataFrame({n: ((d[c] - d[c].mean()) / d[c].std(ddof=0)).groupby(d[\"cum\"]).mean() for n, c in AX})\n\nplt.close(\"all\")\n\n# ---- TĂNG KÍCH THƯỚC TỔNG THỂ LÊN TỐI ĐA ----\nfig = plt.figure(figsize=(20, 12), facecolor=\"white\")\n\n# Nới rộng lề trái xuống 0.18 để chứa chữ to\nax = fig.add_axes([0.18, 0.42, 0.80, 0.48]) \ntb = fig.add_axes([0.18, 0.02, 0.80, 0.32], sharex=ax)\n\nx = np.arange(len(AX))\nax.axhline(0, color=\"#999\", ls=\"--\", lw=2)\n\nfor k in Z.index:\n    # Tăng kích thước điểm marker (ms=16) và đường kẻ (lw=4)\n    ax.plot(x, Z.loc[k].values, color=COL[k], lw=4, marker=MK[k], ms=16, zorder=3)\n\nax.set_xlim(-0.5, len(AX) - 0.5); ax.set_xticks(x)\n# Tăng cỡ chữ tên tiêu chí (Trục X) lên 24\nax.set_xticklabels([n for n, _ in AX], fontsize=24, fontweight=\"bold\") \nax.xaxis.tick_top(); ax.tick_params(axis=\"x\", length=0, pad=15) \n\nax.yaxis.grid(True, color=\"#EEE\"); ax.set_axisbelow(True)\n# Tăng cỡ số trên trục Y lên 20\nax.tick_params(axis=''y'', labelsize=20) \n\nfor s in [\"bottom\", \"right\"]:\n    ax.spines[s].set_visible(False)\n\n# ---- BẢNG GIÁ TRỊ BÊN DƯỚI ----\ntb.set_ylim(4.5, -0.5); tb.axis(\"off\")\nfor i, k in enumerate(Z.index):\n    tb.add_patch(Rectangle((-0.5, i - 0.5), len(AX), 1, fc=\"#F6F6F6\" if i % 2 == 0 else \"white\", ec=\"none\", clip_on=False))\n    for j, v in enumerate(Z.loc[k].values):\n        # Tăng cỡ số trong bảng lên 26\n        tb.text(j, i, (\"0.0\" if abs(v) < 0.05 else f\"{v:+.1f}\"), ha=\"center\", va=\"center\",\n                fontsize=26, fontweight=\"bold\", color=\"#222\") \n    \n    # Tăng kích thước marker trong bảng\n    tb.plot([-0.56], [i], marker=MK[k], color=COL[k], ms=16, clip_on=False)  \n    # Tăng cỡ tên cụm R1, R2... lên 26\n    tb.text(-0.62, i, TEN_BANG[k], ha=\"right\", va=\"center\", fontsize=26, fontweight=\"bold\", color=\"#222\", clip_on=False)\n\nplt.show()'"
+                }
+              }
+            },
+            "provider": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Python'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Đặc điểm của 5 cụm'"
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'''Segoe UI Bold'', wf_segoe-ui_bold, helvetica, arial, sans-serif'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "16D"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'center'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "525f8321508e7ff0e59a",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "loans_mau"
+              }
+            },
+            "Property": "cum"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "0c28aa27054bb8be0770",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "loans_mau"
+              }
+            },
+            "Property": "id"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "2d47570ab47caee73952",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "loans_mau"
+              }
+            },
+            "Property": "annual_inc_t"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "61d3010bce6951973703",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "loans_mau"
+              }
+            },
+            "Property": "fico_range_low"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "4d0b4d29b874ca2d5fbc",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "loans_mau"
+              }
+            },
+            "Property": "dti"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "fc8422880e058a63d59d",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "loans_mau"
+              }
+            },
+            "Property": "revol_util"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "61e90115373923a7526d",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "loans_mau"
+              }
+            },
+            "Property": "total_acc_t"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "0bc9288addc58abff9d5",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "loans_mau"
+              }
+            },
+            "Property": "tuoi_tin_dung_thang_t"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

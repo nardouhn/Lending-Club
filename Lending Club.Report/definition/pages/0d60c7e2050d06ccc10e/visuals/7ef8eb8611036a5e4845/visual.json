@@ -1,0 +1,331 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "7ef8eb8611036a5e4845",
+  "position": {
+    "x": 772,
+    "y": 506,
+    "z": 3008,
+    "height": 214,
+    "width": 484,
+    "tabOrder": 3008
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "cum_tong_hop"
+                    }
+                  },
+                  "Property": "Lãi suất R1"
+                }
+              },
+              "queryRef": "cum_tong_hop.Lãi suất R1",
+              "nativeQueryRef": "Lãi suất R1"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "cum_tong_hop"
+                    }
+                  },
+                  "Property": "Lãi suất R2"
+                }
+              },
+              "queryRef": "cum_tong_hop.Lãi suất R2",
+              "nativeQueryRef": "Lãi suất R2"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "cum_tong_hop"
+                    }
+                  },
+                  "Property": "Lãi suất R3"
+                }
+              },
+              "queryRef": "cum_tong_hop.Lãi suất R3",
+              "nativeQueryRef": "Lãi suất R3"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "cum_tong_hop"
+                    }
+                  },
+                  "Property": "Lãi suất R4"
+                }
+              },
+              "queryRef": "cum_tong_hop.Lãi suất R4",
+              "nativeQueryRef": "Lãi suất R4"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "cum_tong_hop"
+                    }
+                  },
+                  "Property": "Lãi suất R5"
+                }
+              },
+              "queryRef": "cum_tong_hop.Lãi suất R5",
+              "nativeQueryRef": "Lãi suất R5"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "cum_tong_hop"
+                  }
+                },
+                "Property": "Lãi suất R1"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "dataPoint": [
+        {
+          "properties": {
+            "fillTransparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "borderShow": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "borderTransparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "100D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "categoryAxis": [
+        {
+          "properties": {
+            "innerPadding": {
+              "expr": {
+                "Literal": {
+                  "Value": "44L"
+                }
+              }
+            },
+            "outerPadding": {
+              "expr": {
+                "Literal": {
+                  "Value": "171L"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "layout": [
+        {
+          "properties": {
+            "clusteredGapSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "75D"
+                }
+              }
+            },
+            "seriesOrderReversed": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "seriesOrderSorted": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "clusteredGapOverlaps": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Trung bình lãi suất 5 cụm'"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'center'"
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'''Segoe UI Bold'', wf_segoe-ui_bold, helvetica, arial, sans-serif'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "2D"
+                }
+              }
+            },
+            "width": {
+              "expr": {
+                "Literal": {
+                  "Value": "3D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "ca016d3000ac5a0dbd46",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "cum_tong_hop"
+              }
+            },
+            "Property": "Lãi suất R1"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "1b1791c7d113e0193fb4",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "cum_tong_hop"
+              }
+            },
+            "Property": "Lãi suất R2"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "25916c7a3233b8339b86",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "cum_tong_hop"
+              }
+            },
+            "Property": "Lãi suất R3"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "6906cd576d7dc9500d64",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "cum_tong_hop"
+              }
+            },
+            "Property": "Lãi suất R4"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "2bec2582cd2442ac00ef",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "cum_tong_hop"
+              }
+            },
+            "Property": "Lãi suất R5"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

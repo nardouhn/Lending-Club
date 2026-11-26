@@ -1,0 +1,20 @@
+relationship 6ca5c4e9-11eb-4786-967f-9409eb984c2d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: loans_clean.issue_d
+	toColumn: LocalDateTable_c626ee4a-779d-4cbf-84cb-eeaa2d47992c.Date
+
+relationship 158df9fc-acc7-4f1a-a6c1-b99af1a1f1b4
+	joinOnDateBehavior: datePartOnly
+	fromColumn: loans_clean.last_pymnt_d
+	toColumn: LocalDateTable_d853c7b1-ed7c-4d39-a511-5771a69a3cda.Date
+
+relationship d15f8209-df94-4405-9e4e-660ecbb9261f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: loans_mau.issue_d
+	toColumn: LocalDateTable_17a036fe-38f4-4b64-8a1e-3a5a7901522a.Date
+
+relationship aa332ee0-9867-4670-a753-68a7d16c52df
+	joinOnDateBehavior: datePartOnly
+	fromColumn: loans_mau.last_pymnt_d
+	toColumn: LocalDateTable_524bd2fe-02c5-4b79-9f8d-0b7786b82f15.Date
+

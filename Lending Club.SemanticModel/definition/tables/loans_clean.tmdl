@@ -1,0 +1,540 @@
+table loans_clean
+	lineageTag: 141b2a19-90fc-404d-b7e8-e3b88b84be12
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: 4561837f-2246-4f1d-baf5-009443ea02f8
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column issue_d
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: bc7b7347-eb47-4ae5-bcbf-9693ac49fb9e
+		summarizeBy: none
+		sourceColumn: issue_d
+
+		variation Variation
+			isDefault
+			relationship: 6ca5c4e9-11eb-4786-967f-9409eb984c2d
+			defaultHierarchy: LocalDateTable_c626ee4a-779d-4cbf-84cb-eeaa2d47992c.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column issue_year
+		dataType: int64
+		formatString: 0
+		lineageTag: 86d4c38b-b047-44c3-b503-988d91f10e06
+		summarizeBy: sum
+		sourceColumn: issue_year
+
+		annotation SummarizationSetBy = Automatic
+
+	column term_thang
+		dataType: int64
+		formatString: 0
+		lineageTag: c727f0aa-4e05-43d7-8f46-94353c7bef42
+		summarizeBy: sum
+		sourceColumn: term_thang
+
+		annotation SummarizationSetBy = Automatic
+
+	column da_dao_han
+		dataType: int64
+		formatString: 0
+		lineageTag: 71acf295-bc60-4375-a816-fa927cc08cad
+		summarizeBy: sum
+		sourceColumn: da_dao_han
+
+		annotation SummarizationSetBy = Automatic
+
+	column loan_amnt
+		dataType: int64
+		formatString: 0
+		lineageTag: a9788f2e-e591-4003-8317-3586ae4567e0
+		summarizeBy: sum
+		sourceColumn: loan_amnt
+
+		annotation SummarizationSetBy = Automatic
+
+	column annual_inc
+		dataType: int64
+		formatString: 0
+		lineageTag: 140d402e-c2ae-4b51-93eb-3912c08e1d4e
+		summarizeBy: sum
+		sourceColumn: annual_inc
+
+		annotation SummarizationSetBy = Automatic
+
+	column fico_range_low
+		dataType: int64
+		formatString: 0
+		lineageTag: 993f5555-60c1-4b78-9ba8-b24d31292a33
+		summarizeBy: sum
+		sourceColumn: fico_range_low
+
+		annotation SummarizationSetBy = Automatic
+
+	column revol_bal
+		dataType: int64
+		formatString: 0
+		lineageTag: d548840f-a4c6-41a4-9c01-b9ba9b02412e
+		summarizeBy: sum
+		sourceColumn: revol_bal
+
+		annotation SummarizationSetBy = Automatic
+
+	column revol_util
+		dataType: double
+		lineageTag: 9b4cfce4-3023-46a4-b9c1-09b3341698ff
+		summarizeBy: sum
+		sourceColumn: revol_util
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column revol_bal_zero
+		dataType: int64
+		formatString: 0
+		lineageTag: 71e9c8e7-68f0-40d0-94e4-1bc1e54f4a67
+		summarizeBy: sum
+		sourceColumn: revol_bal_zero
+
+		annotation SummarizationSetBy = Automatic
+
+	column annual_inc_t
+		dataType: double
+		lineageTag: a7489527-2241-4fdd-b492-8f8aefd8d67a
+		summarizeBy: sum
+		sourceColumn: annual_inc_t
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column fico_range_low_t
+		dataType: double
+		lineageTag: 44d2caf9-2773-4400-a790-77e3eeed911b
+		summarizeBy: sum
+		sourceColumn: fico_range_low_t
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column mo_sin_rcnt_tl_t
+		dataType: double
+		lineageTag: c9cf8cd4-56f5-47fb-bbad-cd0855ef2259
+		summarizeBy: sum
+		sourceColumn: mo_sin_rcnt_tl_t
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column revol_bal_t
+		dataType: double
+		lineageTag: 4dd92c8f-7e38-497b-a38d-30cd3625fee9
+		summarizeBy: sum
+		sourceColumn: revol_bal_t
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column tot_hi_cred_lim_t
+		dataType: double
+		lineageTag: 60aece6b-3c5e-45ac-86f9-c3296aad8090
+		summarizeBy: sum
+		sourceColumn: tot_hi_cred_lim_t
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_bal_ex_mort_t
+		dataType: double
+		lineageTag: 82a790dd-efb3-417d-9da8-d7178f58f3b5
+		summarizeBy: sum
+		sourceColumn: total_bal_ex_mort_t
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column delinq_2yrs_t
+		dataType: double
+		lineageTag: 551ddda5-2125-4a19-a842-f8ede990c598
+		summarizeBy: sum
+		sourceColumn: delinq_2yrs_t
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column pub_rec_t
+		dataType: double
+		lineageTag: 30a76ec5-fd8d-4bc3-807a-0e839298633a
+		summarizeBy: sum
+		sourceColumn: pub_rec_t
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column num_accts_ever_120_pd_t
+		dataType: double
+		lineageTag: ea6b5f73-4ed8-437b-8883-34a27adfec80
+		summarizeBy: sum
+		sourceColumn: num_accts_ever_120_pd_t
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column inq_last_6mths_t
+		dataType: double
+		lineageTag: fe91980e-196d-45b3-ae6d-1e70102a6061
+		summarizeBy: sum
+		sourceColumn: inq_last_6mths_t
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column num_il_tl_t
+		dataType: double
+		lineageTag: 01f41f44-58bd-46be-8823-0527ae612ca6
+		summarizeBy: sum
+		sourceColumn: num_il_tl_t
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column mort_acc_t
+		dataType: double
+		lineageTag: d939c12b-2eb6-49be-9790-61034dc135cf
+		summarizeBy: sum
+		sourceColumn: mort_acc_t
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column tuoi_tin_dung_thang_t
+		dataType: double
+		lineageTag: fed6e1fd-b721-49bb-a1b3-b08ecebae9fb
+		summarizeBy: sum
+		sourceColumn: tuoi_tin_dung_thang_t
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column open_acc_t
+		dataType: double
+		lineageTag: b0161168-4e67-4ee3-9f52-8870e702fb2c
+		summarizeBy: sum
+		sourceColumn: open_acc_t
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_acc_t
+		dataType: double
+		lineageTag: a024b454-32be-41f8-b3bf-2dc3e589c34f
+		summarizeBy: sum
+		sourceColumn: total_acc_t
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column acc_open_past_24mths_t
+		dataType: double
+		lineageTag: 3ca4d3c4-96f9-4e52-988f-c5706864feef
+		summarizeBy: sum
+		sourceColumn: acc_open_past_24mths_t
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column dti
+		dataType: double
+		lineageTag: 6a89c459-14c2-45e6-b8eb-84ee73773003
+		summarizeBy: sum
+		sourceColumn: dti
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column emp_length_num
+		dataType: int64
+		formatString: 0
+		lineageTag: fb3d52ce-7179-4e8d-be69-182a91583849
+		summarizeBy: sum
+		sourceColumn: emp_length_num
+
+		annotation SummarizationSetBy = Automatic
+
+	column pct_tl_nvr_dlq
+		dataType: double
+		lineageTag: d571023e-4a60-4cda-b242-f593bf907f88
+		summarizeBy: sum
+		sourceColumn: pct_tl_nvr_dlq
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column khong_khai_emp_length
+		dataType: int64
+		formatString: 0
+		lineageTag: 7da610ae-7ff1-4e6c-bb66-f2a4d3ad9ae1
+		summarizeBy: sum
+		sourceColumn: khong_khai_emp_length
+
+		annotation SummarizationSetBy = Automatic
+
+	column vuot_han_muc
+		dataType: int64
+		formatString: 0
+		lineageTag: 42e727a2-3a15-428f-983b-0cd4c1b4adda
+		summarizeBy: sum
+		sourceColumn: vuot_han_muc
+
+		annotation SummarizationSetBy = Automatic
+
+	column grade
+		dataType: string
+		lineageTag: 7d75bdbd-b5df-43f3-aa0a-3127b7621e05
+		summarizeBy: none
+		sourceColumn: grade
+
+		annotation SummarizationSetBy = Automatic
+
+	column sub_grade
+		dataType: string
+		lineageTag: 48a31117-fa55-4f44-805a-6a58b3cf3f81
+		summarizeBy: none
+		sourceColumn: sub_grade
+
+		annotation SummarizationSetBy = Automatic
+
+	column int_rate
+		dataType: double
+		lineageTag: 15e194cd-b5b6-47a8-8744-b5a8cbaf7965
+		summarizeBy: sum
+		sourceColumn: int_rate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column installment
+		dataType: double
+		lineageTag: a634f473-5e15-4449-8a02-315e51ccf8bc
+		summarizeBy: sum
+		sourceColumn: installment
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column verification_status
+		dataType: string
+		lineageTag: ef08f3d1-0ca7-4eb3-b8db-f85acf772530
+		summarizeBy: none
+		sourceColumn: verification_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column purpose
+		dataType: string
+		lineageTag: 3bd5a902-4356-4f29-b50a-c8022cf5e292
+		summarizeBy: none
+		sourceColumn: purpose
+
+		annotation SummarizationSetBy = Automatic
+
+	column home_ownership
+		dataType: string
+		lineageTag: 5b441405-57a4-454f-9f81-b081c9391225
+		summarizeBy: none
+		sourceColumn: home_ownership
+
+		annotation SummarizationSetBy = Automatic
+
+	column initial_list_status
+		dataType: string
+		lineageTag: 55df75f6-f5cc-4c3e-a689-268713163394
+		summarizeBy: none
+		sourceColumn: initial_list_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column addr_state
+		dataType: string
+		lineageTag: 289cb94a-5d2f-4145-87ee-d8b3da516fb7
+		summarizeBy: none
+		sourceColumn: addr_state
+
+		annotation SummarizationSetBy = Automatic
+
+	column vung
+		dataType: string
+		lineageTag: 2c3d4cf2-e46c-4449-8bb4-0c3456f357e7
+		summarizeBy: none
+		sourceColumn: vung
+
+		annotation SummarizationSetBy = Automatic
+
+	column loan_status
+		dataType: string
+		lineageTag: 293f9e1c-dcc0-4651-981d-c8a2b881d034
+		summarizeBy: none
+		sourceColumn: loan_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column default
+		dataType: int64
+		formatString: 0
+		lineageTag: 5f57871a-05c2-4eea-a0aa-30dede9fa97c
+		summarizeBy: sum
+		sourceColumn: default
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_pymnt
+		dataType: double
+		lineageTag: 1f8b3380-623c-4a90-9750-ad99948f89be
+		summarizeBy: sum
+		sourceColumn: total_pymnt
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_rec_prncp
+		dataType: double
+		lineageTag: 8050b32e-d648-4624-ad19-9cdec39f00dd
+		summarizeBy: sum
+		sourceColumn: total_rec_prncp
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_rec_int
+		dataType: double
+		lineageTag: 1251cc10-a728-4e83-ad19-a199307473fd
+		summarizeBy: sum
+		sourceColumn: total_rec_int
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_rec_late_fee
+		dataType: double
+		lineageTag: f9043dc8-66ef-43fd-b5ce-0670209da240
+		summarizeBy: sum
+		sourceColumn: total_rec_late_fee
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column recoveries
+		dataType: double
+		lineageTag: 74ca59dc-78b2-4cf7-b363-470a13e2312f
+		summarizeBy: sum
+		sourceColumn: recoveries
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column collection_recovery_fee
+		dataType: double
+		lineageTag: e303b0c3-4713-413e-b94a-3c9825e85dcd
+		summarizeBy: sum
+		sourceColumn: collection_recovery_fee
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column last_pymnt_d
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 46c1b5e7-7a02-4996-84e0-9dd8a6503965
+		summarizeBy: none
+		sourceColumn: last_pymnt_d
+
+		variation Variation
+			isDefault
+			relationship: 158df9fc-acc7-4f1a-a6c1-b99af1a1f1b4
+			defaultHierarchy: LocalDateTable_d853c7b1-ed7c-4d39-a511-5771a69a3cda.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column cum
+		dataType: int64
+		formatString: 0
+		lineageTag: 3ac76a88-eef6-4b5a-add0-d5d5e6672c1e
+		summarizeBy: sum
+		sourceColumn: cum
+
+		annotation SummarizationSetBy = Automatic
+
+	column nhan_cum
+		dataType: string
+		lineageTag: 760b13b3-0e27-4dd6-a438-7f6bfc99d31c
+		summarizeBy: none
+		sourceColumn: nhan_cum
+
+		annotation SummarizationSetBy = Automatic
+
+	column ten_cum =
+			
+			SWITCH(loans_clean[cum],
+			    1, "R1 · Tín dụng tốt",
+			    2, "R2 · Dùng sát hạn mức",
+			    3, "R3 · Thu nhập cao, vay lớn",
+			    4, "R4 · Thu nhập thấp, vay nhỏ",
+			    5, "R5 · Gánh nặng cao")
+		lineageTag: d95599c2-9dd9-47b1-aed9-0a495f5fbeef
+		summarizeBy: none
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	partition loans_clean = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\admin\Downloads\loans_clean.csv"),[Delimiter=",", Columns=53, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"id", Int64.Type}, {"issue_d", type date}, {"issue_year", Int64.Type}, {"term_thang", Int64.Type}, {"da_dao_han", Int64.Type}, {"loan_amnt", Int64.Type}, {"annual_inc", Int64.Type}, {"fico_range_low", Int64.Type}, {"revol_bal", Int64.Type}, {"revol_util", type number}, {"revol_bal_zero", Int64.Type}, {"annual_inc_t", type number}, {"fico_range_low_t", type number}, {"mo_sin_rcnt_tl_t", type number}, {"revol_bal_t", type number}, {"tot_hi_cred_lim_t", type number}, {"total_bal_ex_mort_t", type number}, {"delinq_2yrs_t", type number}, {"pub_rec_t", type number}, {"num_accts_ever_120_pd_t", type number}, {"inq_last_6mths_t", type number}, {"num_il_tl_t", type number}, {"mort_acc_t", type number}, {"tuoi_tin_dung_thang_t", type number}, {"open_acc_t", type number}, {"total_acc_t", type number}, {"acc_open_past_24mths_t", type number}, {"dti", type number}, {"emp_length_num", Int64.Type}, {"pct_tl_nvr_dlq", type number}, {"khong_khai_emp_length", Int64.Type}, {"vuot_han_muc", Int64.Type}, {"grade", type text}, {"sub_grade", type text}, {"int_rate", type number}, {"installment", type number}, {"verification_status", type text}, {"purpose", type text}, {"home_ownership", type text}, {"initial_list_status", type text}, {"addr_state", type text}, {"vung", type text}, {"loan_status", type text}, {"default", Int64.Type}, {"total_pymnt", type number}, {"total_rec_prncp", type number}, {"total_rec_int", type number}, {"total_rec_late_fee", type number}, {"recoveries", type number}, {"collection_recovery_fee", type number}, {"last_pymnt_d", type date}, {"cum", Int64.Type}, {"nhan_cum", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

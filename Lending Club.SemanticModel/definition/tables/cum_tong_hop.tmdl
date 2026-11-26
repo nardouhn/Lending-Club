@@ -1,0 +1,97 @@
+table cum_tong_hop
+	lineageTag: 21b6f337-17ea-433f-934e-568cfbe4a209
+
+	measure 'Tín dụng tốt' = 13.2/100
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 58fe1428-f9bc-480a-a93c-3530a462b0b4
+
+	measure 'Dùng sát hạn mức' = 20.6/100
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 3713a7b0-ab5f-421b-9c14-f774fc2667b1
+
+	measure 'Thu nhập cao, vay lớn' = 21.3/100
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 61c5181f-e436-4b7f-9ec3-2c767cf72264
+
+	measure 'Thu nhập thấp, vay nhỏ' = 18.6/100
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 54c89869-2acc-4be0-acf3-34d68ffc10e6
+
+	measure 'Gánh nặng nợ cao' = 26.3/100
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: a7c0136f-42bf-4543-9600-1362567b02e1
+
+	measure R1 = 6.88/100
+		lineageTag: 18576608-1553-47c8-95af-dfee9d0a4974
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure R2 = 10.73/100
+		lineageTag: dfbc2e95-3aec-41a1-8549-1557070b13f8
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure R3 = 11.87/100
+		lineageTag: be351ff1-9746-4a6b-87b7-0ee4e0284fc7
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure R4 = 16.04/100
+		lineageTag: 77ea3238-02f7-4c10-a728-f44d881f8276
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure R5 = 19.34/100
+		lineageTag: 6bf7033f-b181-47e0-b073-8418e5ce2660
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Lãi suất R1' = 8.71/100
+		lineageTag: 6d1de00d-91d0-425c-bf0d-f862c9ae7a41
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Lãi suất R2' = 11.33/100
+		lineageTag: ae1cf28f-942f-4d0c-9db0-7cc43ef831cb
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Lãi suất R3' = 11.32/100
+		lineageTag: 657904c7-a187-4ce1-9702-32be8a160460
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Lãi suất R4' = 13.19/100
+		lineageTag: 8caa97ce-4bc2-44ce-92d0-f0e7a209fc6e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Lãi suất R5' = 13.39/100
+		lineageTag: 65fa7c64-2c02-4739-84da-36d4a7b0f772
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column cum
+		formatString: 0
+		lineageTag: 2524adb9-d854-4109-b318-ea5027a0c5b2
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: loans_clean[cum]
+
+		annotation SummarizationSetBy = Automatic
+
+	column so_khach
+		formatString: 0
+		lineageTag: 120ba7e1-44d1-407f-91a7-aebb006475e3
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [so_khach]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition cum_tong_hop = calculated
+		mode: import
+		source = SUMMARIZECOLUMNS(loans_clean[cum], "so_khach", COUNTROWS(loans_clean))
+
+	annotation PBI_Id = e53b03fcb9cf4f6b9e9accea196e87e6
+
